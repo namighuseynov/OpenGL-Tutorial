@@ -1,11 +1,13 @@
 #include <iostream>
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
+
 #include <fstream>
 #include <sstream>
 #include <streambuf>
 #include <string>
 
-#include "glad/glad.h"
-#include "GLFW/glfw3.h"
+
 
 
 void framebuffer_size_callback(GLFWwindow* window, int widht, int height);
@@ -49,7 +51,7 @@ int main() {
 	//Compile vertex shaders
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	std::string vertShaderSrc = LoadShaderSource("../assets/vertex_shader.glsl");
+	std::string vertShaderSrc = LoadShaderSource("assets/vertex_shader.glsl");
 	const GLchar* vertShader = vertShaderSrc.c_str();
 	glShaderSource(vertexShader, 1, &vertShader, NULL);
 	glCompileShader(vertexShader);
@@ -63,7 +65,7 @@ int main() {
 	//Compile vertex shaders
 	unsigned int fragmentShader;
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	std::string fragShaderSrc = LoadShaderSource("../assets/fragment_shader.glsl");
+	std::string fragShaderSrc = LoadShaderSource("assets/fragment_shader.glsl");
 	const GLchar* fragShader = fragShaderSrc.c_str();
 	glShaderSource(fragmentShader, 1, &fragShader, NULL);
 	glCompileShader(fragmentShader);
@@ -137,7 +139,6 @@ int main() {
 	}
 
 	glfwTerminate();
-	std::system("pause");
 	return 0;
 }
 
@@ -155,6 +156,7 @@ std::string LoadShaderSource(const char* filename) {
 	std::ifstream file;
 	std::stringstream buf;
 	std::string ret = "";
+
 	file.open(filename);
 	if (file.is_open()) {
 		buf << file.rdbuf();
@@ -163,4 +165,6 @@ std::string LoadShaderSource(const char* filename) {
 	else {
 		std::cout << "Could not open" << filename << std::endl;
 	}
+	file.close();
+	return ret;
 }
