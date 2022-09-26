@@ -8,11 +8,10 @@
 #include <string>
 
 
-
-
 void framebuffer_size_callback(GLFWwindow* window, int widht, int height);
 void processInput(GLFWwindow* window);
 std::string LoadShaderSource(const char* filename);
+
 
 int main() {
 	int success = 0;
@@ -31,13 +30,13 @@ int main() {
 #endif
 	GLFWwindow* window = glfwCreateWindow(800, 600, "Opengl Tutorial", NULL, NULL);
 	if (window == NULL) {
-		std::cout << "Could not create window." << std::endl;
+		std::cout << "ERROR_GLFW: Could not create window." << std::endl;
 		glfwTerminate();
 		return -1;
 	}
 	glfwMakeContextCurrent(window);
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		std::cout << "Failed to initialize GLAD " << std::endl;
+		std::cout << "ERROR_GLAD: Failed to initialize GLAD " << std::endl;
 		return -1;
 	}
 
@@ -62,7 +61,7 @@ int main() {
 		std::cout << "Error with vertex shader comp.:" << std::endl << infoLog << std::endl;
 	}
 
-	//Compile vertex shaders
+	//Compile fragment shaders
 	unsigned int fragmentShader;
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	std::string fragShaderSrc = LoadShaderSource("assets/fragment_shader.glsl");
@@ -96,7 +95,7 @@ int main() {
 	float vertices[] = {
 			-0.5f, -0.5f, 0.0f,
 			0.0f, 0.5f, 0.0f,
-			0.5f, 0.0f, 0.0f
+			0.5f, -0.5f, 0.0f
 	};
 	//VAO, VBO
 	unsigned int VAO, VBO;

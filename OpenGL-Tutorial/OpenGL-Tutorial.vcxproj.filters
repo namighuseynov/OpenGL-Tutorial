@@ -16,6 +16,15 @@
     <Filter Include="Linking\include\glad">
       <UniqueIdentifier>{EBCB971E-D75A-21E8-8079-35E36CE7318E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Linking\include\glm">
+      <UniqueIdentifier>{B3F6782F-1F58-563D-A8C5-9CEF14268DFC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linking\include\glm\simd">
+      <UniqueIdentifier>{EF7AA114-DB9F-F094-04EB-D524F06EEFB2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Linking\include\stb">
+      <UniqueIdentifier>{BC2A792F-288C-563D-B1F9-9CEF1D5A8DFC}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
@@ -33,6 +42,39 @@
     <ClInclude Include="..\Linking\include\glad\glad.h">
       <Filter>Linking\include\glad</Filter>
     </ClInclude>
+    <ClInclude Include="..\Linking\include\glm\simd\common.h">
+      <Filter>Linking\include\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Linking\include\glm\simd\exponential.h">
+      <Filter>Linking\include\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Linking\include\glm\simd\geometric.h">
+      <Filter>Linking\include\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Linking\include\glm\simd\integer.h">
+      <Filter>Linking\include\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Linking\include\glm\simd\matrix.h">
+      <Filter>Linking\include\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Linking\include\glm\simd\neon.h">
+      <Filter>Linking\include\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Linking\include\glm\simd\packing.h">
+      <Filter>Linking\include\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Linking\include\glm\simd\platform.h">
+      <Filter>Linking\include\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Linking\include\glm\simd\trigonometric.h">
+      <Filter>Linking\include\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Linking\include\glm\simd\vector_relational.h">
+      <Filter>Linking\include\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Linking\include\stb\stb_image.h">
+      <Filter>Linking\include\stb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c">
@@ -41,7 +83,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\fragment_shader.glsl" />
-    <None Include="assets\vertex_shader.glsl" />
+    <None Include="src\assets\fragment_shader.glsl" />
+    <None Include="src\assets\vertex_shader.glsl" />
   </ItemGroup>
 </Project>

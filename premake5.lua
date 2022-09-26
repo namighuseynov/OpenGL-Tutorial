@@ -12,7 +12,7 @@ project "OpenGL-Tutorial"
     filter "system:windows" 
         cppdialect "C++17"
         systemversion "latest"
-        links {"kernel32", "user32", "gdi32", "opengl32", "shell32", "GLFW/glfw3.lib"}
+        links {"kernel32", "user32", "gdi32", "winspool", "comdlg32", "advapi32", "shell32", "ole32", "oleaut32", "uuid", "odbc32", "odbccp32", "opengl32", "GLFW/glfw3.lib"}
 
     filter "configurations:Release" 
         defines { "NDEBUG" }      
