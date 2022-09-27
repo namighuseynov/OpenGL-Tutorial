@@ -85,5 +85,6 @@
   <ItemGroup>
     <None Include="src\assets\fragment_shader.glsl" />
     <None Include="src\assets\vertex_shader.glsl" />
+    <None Include="glfw3.dll" />
   </ItemGroup>
 </Project>

@@ -77,6 +77,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="glfw3.dll" />
     <None Include="src\assets\fragment_shader.glsl" />
     <None Include="src\assets\vertex_shader.glsl" />
   </ItemGroup>
