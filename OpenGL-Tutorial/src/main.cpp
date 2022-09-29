@@ -6,6 +6,7 @@
 #include <sstream>
 #include <streambuf>
 #include <string>
+#include <math.h>
 
 
 void framebuffer_size_callback(GLFWwindow* window, int widht, int height);
@@ -44,75 +45,65 @@ int main() {
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	
 	/*
-		Shaders
+	*  Shaders
 	*/
-	//Compile vertex shaders
+	//Compile Shaders
 	unsigned int vertexShader;
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	std::string vertShaderSrc = LoadShaderSource("assets/vertex_shader.glsl");
-	const GLchar* vertShader = vertShaderSrc.c_str();
-	glShaderSource(vertexShader, 1, &vertShader, NULL);
+	std::string vertexShaderSource = LoadShaderSource("assets/vertex_shader.glsl");
+	const GLchar* vertexShaderSrc = vertexShaderSource.c_str();
+	glShaderSource(vertexShader, 1, &vertexShaderSrc, NULL);
 	glCompileShader(vertexShader);
-	//Catch error
 	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
 	if (!success) {
 		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		std::cout << "Error with vertex shader comp.:" << std::endl << infoLog << std::endl;
+		std::cout << "Error:VERT" << infoLog << std::endl;
 	}
-
-	//Compile fragment shaders
 	unsigned int fragmentShader;
 	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	std::string fragShaderSrc = LoadShaderSource("assets/fragment_shader.glsl");
-	const GLchar* fragShader = fragShaderSrc.c_str();
-	glShaderSource(fragmentShader, 1, &fragShader, NULL);
+	std::string fragmentShaderSource = LoadShaderSource("assets/fragment_shader.glsl");
+	const GLchar* fragmentShaderSrc = fragmentShaderSource.c_str();
+	glShaderSource(fragmentShader, 1, &fragmentShaderSrc, NULL);
 	glCompileShader(fragmentShader);
-	//Catch error
 	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
 	if (!success) {
 		glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-		std::cout << "Error with fragment shader comp.:" << std::endl << infoLog << std::endl;
+		std::cout << "Error:Frag" << infoLog << std::endl;
 	}
 
-	//Create Program
 	unsigned int shaderProgram;
 	shaderProgram = glCreateProgram();
 
 	glAttachShader(shaderProgram, vertexShader);
 	glAttachShader(shaderProgram, fragmentShader);
 	glLinkProgram(shaderProgram);
-	//Catch error
 	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
 	if (!success) {
 		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-		std::cout << "Error with shader Program comp.:" << std::endl << infoLog << std::endl;
+		std::cout << "Error:Prog" << infoLog << std::endl;
 	}
-
-
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
-	//Vertex Array 
-	float vertices[] = {
-			-0.5f, -0.5f, 0.0f,
-			0.0f, 0.5f, 0.0f,
-			0.5f, -0.5f, 0.0f
+	//VERTICES
+	float vertices[]{
+		-0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+		0.0f, 0.5f, 0.0f,	0.0f, 1.0f, 0.0f,
+		0.5f, -0.5f, 0.0f,	0.0f, 0.0f, 1.0f
 	};
+
 	//VAO, VBO
+
 	unsigned int VAO, VBO;
-	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
-
-	//Bind VAO
-	glBindVertexArray(VAO);
-
-	//Bind VBO
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glGenVertexArrays(1, &VAO);
+	glBindVertexArray(VAO);
 
-	// set Attribute pointer
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*6, (void*)0);
 	glEnableVertexAttribArray(0);
-
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void*)(3*sizeof(float)));
+	glEnableVertexAttribArray(1);
 
 	while (!glfwWindowShouldClose(window)) {
 		//process input 
