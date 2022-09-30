@@ -41,7 +41,7 @@ int main() {
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	//Our Shader
-	Shader simpleShader("assets/vertex_shader.nvs", "assets/fragment_shader.nfs");
+	Shader simpleShader("assets/Shaders/vertex_shader.nvs", "assets/Shaders/fragment_shader.nfs");
 	
 
 	//VERTICES
