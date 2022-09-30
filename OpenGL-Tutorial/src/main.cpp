@@ -74,7 +74,10 @@ int main() {
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		//draw shapes
+		float time = glfwGetTime();
+		float PosX = (float)0.5f * sin(time);
 		simpleShader.Use();
+		simpleShader.SetFloat("PosX", PosX);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 
