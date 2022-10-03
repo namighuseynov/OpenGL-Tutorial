@@ -3,6 +3,8 @@ workspace "OpenGL-Tutorial"
     architecture "x64"
     configurations "Release"
     location "OpenGL-Tutorial"
+    targetdir "bin/"
+    objdir "bin-obj/" 
 
 project "OpenGL-Tutorial"   
     kind "ConsoleApp"  
@@ -17,12 +19,13 @@ project "OpenGL-Tutorial"
     filter "configurations:Release" 
         defines { "NDEBUG" }      
         optimize "On" 
-        targetdir "bin/"
-        objdir "bin-obj/" 
         
     includedirs {"Linking/include"}
     libdirs {"Linking/libs/GLFW"}
 
-
+project "OpenGL" 
+    kind "staticLib"
+    language "C++"
+    
     
 

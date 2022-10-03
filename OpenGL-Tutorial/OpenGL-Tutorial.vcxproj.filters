@@ -90,5 +90,7 @@
     <None Include="glfw3.dll" />
     <None Include="assets\fragment_shader.glsl" />
     <None Include="assets\vertex_shader.glsl" />
+    <None Include="src\assets\Shaders\fragment_shader.nfs" />
+    <None Include="src\assets\Shaders\vertex_shader.nvs" />
   </ItemGroup>
 </Project>

@@ -9,6 +9,9 @@
 void framebuffer_size_callback(GLFWwindow* window, int widht, int height);
 void processInput(GLFWwindow* window);
 
+const unsigned int width = 800;
+const unsigned int height = 600;
+
 
 int main() {
 
@@ -20,7 +23,7 @@ int main() {
 #ifdef __APPLE__ 
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Opengl Tutorial", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(width, height, "Opengl Tutorial", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "ERROR_GLFW: Could not create window." << std::endl;
 		glfwTerminate();
@@ -32,7 +35,7 @@ int main() {
 		return -1;
 	}
 
-	glViewport(0, 0, 800, 600);
+	glViewport(0, 0, width, height);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
 	//Our Shader

@@ -83,6 +83,8 @@
     <None Include="assets\vertex_shader.glsl" />
     <None Include="glfw3.dll" />
     <None Include="src\assets\fragment_shader.glsl" />
+    <None Include="src\assets\Shaders\fragment_shader.nfs" />
+    <None Include="src\assets\Shaders\vertex_shader.nvs" />
     <None Include="src\assets\vertex_shader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
