@@ -13,8 +13,8 @@
 void framebuffer_size_callback(GLFWwindow* window, int widht, int height);
 void processInput(GLFWwindow* window);
 
-const unsigned int WIDTH = 800;
-const unsigned int HEIGHT = 600;
+const float WIDTH = 800.0f;
+const float HEIGHT = 600.0f;
 
 
 int main() {
@@ -140,7 +140,7 @@ int main() {
 	stbi_image_free(data);
 
 	glm::vec3 cubePositions[] = {
-		glm::vec3(0.0f,  0.0f,  0.0f),
+		glm::vec3(0.0f,  0.0f,  -2.0f),
 		glm::vec3(2.0f,  5.0f, -15.0f),
 		glm::vec3(-1.5f, -2.2f, -2.5f),
 		glm::vec3(-3.8f, -2.0f, -12.3f),
@@ -168,23 +168,26 @@ int main() {
 		glm::mat4 view = glm::mat4(1.0f);
 		glm::mat4 projection = glm::mat4(1.0f);
 
-		model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
-		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-		projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
-		
-		glUniformMatrix4fv(glGetUniformLocation(shader.GetId(), "model"), 1, GL_FALSE, glm::value_ptr(model));
-		glUniformMatrix4fv(glGetUniformLocation(shader.GetId(), "view"), 1, GL_FALSE, glm::value_ptr(view)); 
-		glUniformMatrix4fv(glGetUniformLocation(shader.GetId(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+		float speed = -1*glfwGetTime();
+		std::cout << speed << std::endl;
+
+
+		view = glm::translate(view, glm::vec3(0.0f, 0.0f, speed));
+		projection = glm::perspective(glm::radians(45.0f), (WIDTH / HEIGHT), 0.01f, 10000.0f);
+
+		shader.SetMat4("view", view);
+		shader.SetMat4("projection", projection);
 
 		glBindVertexArray(VAO);
 		for (int i = 0; i < 10; i++) {
-			glm::mat4 model = glm::mat4(1.0f);
+			model = glm::mat4(1.0f);
 			model = glm::translate(model, cubePositions[i]);
 			float angle = 20.0f *(i+1)*glfwGetTime();
 			model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
 			shader.SetMat4("model", model);
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
+
 		//Send new frame to window
 		glfwSwapBuffers(window);
 		glfwPollEvents();

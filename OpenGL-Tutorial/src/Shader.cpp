@@ -77,8 +77,8 @@ void Shader::SetFloat(const std::string& name, float value) const {
 	glUniform1f(glGetUniformLocation(this->id, name.c_str()), value);
 }
 
-void Shader::SetMat4(const char* shaderName, const glm::mat4 &param) {
-	glUniformMatrix4fv(glGetUniformLocation(this->id, shaderName), 1, GL_FALSE, glm::value_ptr(param));
+void Shader::SetMat4(const char* uniformName, const glm::mat4 &param) {
+	glUniformMatrix4fv(glGetUniformLocation(this->id, uniformName), 1, GL_FALSE, glm::value_ptr(param));
 }
 
 int Shader::checkCompileOrLinkingError(const unsigned int &shaderOrProgram, const char* type) {
