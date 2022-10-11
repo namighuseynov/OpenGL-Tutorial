@@ -71,9 +71,11 @@
     <ClInclude Include="..\Linking\include\glm\simd\trigonometric.h" />
     <ClInclude Include="..\Linking\include\glm\simd\vector_relational.h" />
     <ClInclude Include="..\Linking\include\stb\stb_image.h" />
+    <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Shader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />

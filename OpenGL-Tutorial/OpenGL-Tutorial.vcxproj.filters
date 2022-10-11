@@ -76,6 +76,7 @@
       <Filter>Linking\include\stb</Filter>
     </ClInclude>
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c">
@@ -83,6 +84,7 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\assets\fragment_shader.glsl" />
