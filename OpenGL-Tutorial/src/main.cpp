@@ -1,14 +1,18 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+
 #include "glm/glm.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
 
 #include "Shader.h"
+#include "Mesh.h"
 #include "Camera.h"
+#include "Input.h"
 
 
 void framebuffer_size_callback(GLFWwindow* window, int widht, int height);
@@ -16,8 +20,8 @@ void processInput(GLFWwindow* window);
 
 void Draw(Shader* shader);
 
-const float WIDTH = 800.0f;
-const float HEIGHT = 600.0f;
+int WIDTH = 800;
+int HEIGHT = 600; 
 
 
 int main() {
@@ -197,7 +201,7 @@ void Draw(Shader* shader) {
 	glm::mat4 model = glm::mat4(1.0f);
 	glm::mat4 view = glm::mat4(1.0f);
 	glm::mat4 projection = glm::mat4(1.0f);
-	float speed = -1 * glfwGetTime();
+	float speed = -1 * (float)glfwGetTime();
 
 
 	glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
@@ -207,13 +211,11 @@ void Draw(Shader* shader) {
 	glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
 	glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
 	const float radius = 10.0f;
-	float camX = sin(glfwGetTime()) * radius;
-	float camZ = cos(glfwGetTime()) * radius;
+	float camX = sin((float)glfwGetTime()) * radius;
+	float camZ = cos((float)glfwGetTime()) * radius;
 	view = glm::lookAt(glm::vec3(camX, 0.0, camZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
 
-
-	//view = glm::translate(view, glm::vec3(0.0f, 0.0f, speed));
-	projection = glm::perspective(glm::radians(45.0f), (WIDTH / HEIGHT), 0.01f, 10000.0f);
+	projection = glm::perspective(glm::radians(45.0f), (800.0f / 600.0f), 0.01f, 10000.0f);
 
 	shader->SetMat4("view", view);
 	shader->SetMat4("projection", projection);
@@ -221,7 +223,7 @@ void Draw(Shader* shader) {
 	for (int i = 0; i < 10; i++) {
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, cubePositions[i]);
-		float angle = 20.0f * (i + 1) * glfwGetTime();
+		float angle = 20.0f * (i + 1) * (float)glfwGetTime();
 		model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
 		shader->SetMat4("model", model);
 		glDrawArrays(GL_TRIANGLES, 0, 36);

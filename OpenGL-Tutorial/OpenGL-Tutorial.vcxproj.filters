@@ -77,6 +77,14 @@
     </ClInclude>
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\Input.h" />
+    <ClInclude Include="src\InputHandler.h" />
+    <ClInclude Include="src\EventSystem\Event.h" />
+    <ClInclude Include="src\EventSystem\MouseEvent.h" />
+    <ClInclude Include="src\EventSystem\KeyEvent.h" />
+    <ClInclude Include="src\EventSystem\InputEvent.h" />
+    <ClInclude Include="src\EventSystem\WindowEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glad.c">
@@ -85,6 +93,14 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\Input.cpp" />
+    <ClCompile Include="src\InputHandler.cpp" />
+    <ClCompile Include="src\EventSystem\Event.cpp" />
+    <ClCompile Include="src\EventSystem\MouseEvent.cpp" />
+    <ClCompile Include="src\EventSystem\KeyEvent.cpp" />
+    <ClCompile Include="src\EventSystem\InputEvent.cpp" />
+    <ClCompile Include="src\EventSystem\WindowEvent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\assets\fragment_shader.glsl" />
