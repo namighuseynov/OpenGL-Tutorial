@@ -71,23 +71,23 @@
     <ClInclude Include="..\Linking\include\glm\simd\trigonometric.h" />
     <ClInclude Include="..\Linking\include\glm\simd\vector_relational.h" />
     <ClInclude Include="..\Linking\include\stb\stb_image.h" />
+    <ClInclude Include="src\Global\InputValues.h" />
+    <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\EventSystem\InputEvent.h" />
     <ClInclude Include="src\EventSystem\KeyEvent.h" />
     <ClInclude Include="src\EventSystem\MouseEvent.h" />
     <ClInclude Include="src\EventSystem\Event.h" />
-    <ClInclude Include="src\InputHandler.h" />
-    <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\EventSystem\WindowEvent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Global\InputValues.cpp" />
     <ClCompile Include="src\EventSystem\InputEvent.cpp" />
     <ClCompile Include="src\EventSystem\KeyEvent.cpp" />
     <ClCompile Include="src\EventSystem\MouseEvent.cpp" />
     <ClCompile Include="src\EventSystem\Event.cpp" />
-    <ClCompile Include="src\InputHandler.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Camera.cpp" />
@@ -99,7 +99,6 @@
   <ItemGroup>
     <None Include="assets\fragment_shader.glsl" />
     <None Include="assets\vertex_shader.glsl" />
-    <None Include="glfw3.dll" />
     <None Include="src\assets\fragment_shader.glsl" />
     <None Include="src\assets\Shaders\fragment_shader.nfs" />
     <None Include="src\assets\Shaders\vertex_shader.nvs" />

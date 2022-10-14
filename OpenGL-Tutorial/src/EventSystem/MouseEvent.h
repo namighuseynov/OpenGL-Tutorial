@@ -1,7 +1,7 @@
 #pragma once
-#include "Event.h"
+#include "InputEvent.h"
 class MouseEvent :
-    public Event
-{
+    public InputEvent {
+public:
+    unsigned int GetType() const = 0;
 };
-

@@ -1,11 +1,22 @@
 #pragma once
 #ifndef SHADER_H
 	#define SHADER_H
+#endif
 
-#include "glad/glad.h"
-#include "glm/glm.hpp"
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#ifndef GLM_INCLUDE
+	#include "glm/glm.hpp"
+	#include <glm/gtc/matrix_transform.hpp>
+	#include <glm/gtc/type_ptr.hpp>
+#endif // !GLM_INCLUDE
+
+#ifndef GLFW_INCLUDE 
+
+	#define GLFW_INCLUDE
+	#include "glad/glad.h"
+	#include "GLFW/glfw3.h"
+
+#endif // !GLFW_INCLUDE 
+
 
 
 #include <string>
@@ -37,8 +48,3 @@ private:
 	int checkCompileOrLinkingError(const unsigned int& shaderOrProgram, const char* type);
 	unsigned int id;
 };
-
-#endif
-
-
-

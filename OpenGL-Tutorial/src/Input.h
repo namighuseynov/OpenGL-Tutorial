@@ -1,20 +1,24 @@
 #pragma once
-#ifndef INPUT_SYSTEM
-	#define INPUT_SYSTEM
+#ifndef INPUT_H
+	#define INPUT_H
+#endif // INPUT_H
 
-	#define AXIS_X 0
-	#define AXIS_Y 1
+#ifndef GLFW_INCLUDE
+	#define GLFW_INCLUDE
+	#include "glad/glad.h"
+	#include "GLFW/glfw3.h"
+#endif // !GLFW_INCLUDE
 
-#endif
+#include "Global/InputValues.h"
 
 
-class Input
-{
+
+class Input final {
 public:
 	static float GetAxis(unsigned int axis);
-	static void Update();
-private:
-	static float x;
-	static float y;
+	static void Update(GLFWwindow* window);
 };
+
+
+#define INPUT_VALUES_CLASS
 

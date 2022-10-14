@@ -1,18 +1,35 @@
-#include "glad/glad.h"
-#include "GLFW/glfw3.h"
+#ifndef GLFW_INCLUDE 
 
-#include "glm/glm.hpp"
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtx/string_cast.hpp>
+	#define GLFW_INCLUDE
+	#include "glad/glad.h"
+	#include "GLFW/glfw3.h"
 
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb/stb_image.h"
+#endif // !GLFW_INCLUDE 
+
+#ifndef GLM_INCLUDE
+
+	#define GLM_INCLUDE
+	#include "glm/glm.hpp"
+	#include <glm/gtc/matrix_transform.hpp>
+	#include <glm/gtc/type_ptr.hpp>
+	#include <glm/gtx/string_cast.hpp>
+
+#endif // !GLM_INCLUDE
+
+#ifndef STB_IMAGE_IMPLEMENTATION
+	#define STB_IMAGE_IMPLEMENTATION
+	#include "stb/stb_image.h"
+#endif // !STB_IMAGE_IMPLEMENTATION
+
+
 
 #include "Shader.h"
 #include "Mesh.h"
 #include "Camera.h"
+
 #include "Input.h"
+
+
 
 
 void framebuffer_size_callback(GLFWwindow* window, int widht, int height);
@@ -150,7 +167,7 @@ int main() {
 		//Draw Shapes
 		Draw(shader);
 
-
+		std::cout << Input::GetAxis(INPUT_HORIZONTAL) << std::endl;
 		//Send new frame to window
 		glfwSwapBuffers(window);
 		glfwPollEvents();
@@ -167,21 +184,8 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 }
 
 void processInput(GLFWwindow* window) {
-	if (glfwGetKey(window, GLFW_KEY_W) || glfwGetKey(window, GLFW_KEY_UP)) {
-		std::cout << "up" << std::endl;
-	}
-	if (glfwGetKey(window, GLFW_KEY_S) || glfwGetKey(window, GLFW_KEY_DOWN)) {
-		std::cout << "down" << std::endl;
-	}
-	if (glfwGetKey(window, GLFW_KEY_A) || glfwGetKey(window, GLFW_KEY_LEFT)) {
-		std::cout << "left" << std::endl;
-	}
-	if (glfwGetKey(window, GLFW_KEY_D) || glfwGetKey(window, GLFW_KEY_RIGHT)) {
-		std::cout << "right" << std::endl;
-	}
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE)) {
-		glfwSetWindowShouldClose(window, true);
-	}
+	Input::Update(window); 
+	std::cout << Input::GetAxis(1) << std::endl;
 }
 
 void Draw(Shader* shader) {
